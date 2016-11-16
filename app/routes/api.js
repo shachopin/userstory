@@ -31,6 +31,7 @@ module.exports = function(app, express) {
     go to postman
     post localhost:3000/api/signup
     click the "x-www-form-urlencoded" radio button
+    The moment I click this, then automatically this request header is added - Content-Type:application/x-www-form-urlencoded
     type in key value pair one by one
     name: Dawei
     username: shachopin
