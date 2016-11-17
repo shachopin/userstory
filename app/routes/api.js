@@ -1,5 +1,5 @@
 var User = require('../models/user');
-var Stody = require('../models/story');
+var Story = require('../models/story');
 var config = require('../../config');
 
 var secretKey = config.secretKey;
@@ -134,6 +134,12 @@ module.exports = function(app, express) {
           res.status(403).send({ success: false, message: "Failed to authenticate user"});
 
         } else {
+          console.log("here is the decoded info", decoded);
+          /*
+            here is the decoded info { id: '582be53f3f34440200b84fac',
+            iat: 1479344192,
+            exp: 1479430592 }
+          */
           //
           req.decoded = decoded;
           next(); //next route
@@ -193,7 +199,7 @@ module.exports = function(app, express) {
   */
 
   api.route('/')
-     //chaning method, never put ;
+     //chaining method, never put ;
     .post(function(req, res) {
 
       var story = new Story({
@@ -211,6 +217,23 @@ module.exports = function(app, express) {
         res.json({message: "New Story Created!"});
       });
     })
+    /*
+     To test:
+
+     POST localhost:3000/api
+
+     request header:
+     x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
+     Content-Type:application/x-www-form-urlencoded
+
+     request body:
+     click the "x-www-form-urlencoded" radio button
+     type content:This is my second story
+
+     click send
+     shows 
+     {"message": "New Story Created!"}
+    */
 
 
     .get(function(req, res) {
@@ -225,12 +248,45 @@ module.exports = function(app, express) {
         res.send(stories);
       });
     });
+    /*
+    To test:
+    GET localhost:3000/api
+    x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
+  
+    response body
+    [
+  {
+    "_id": "582d4de12daf3a016bcded87",
+    "creator": "582be53f3f34440200b84fac",
+    "content": "This is my story",
+    "__v": 0,
+    "created": "2016-11-17T06:27:45.370Z"
+  },
+  {
+    "_id": "582d4dfb2daf3a016bcded88",
+    "creator": "582be53f3f34440200b84fac",
+    "content": "This is my second story",
+    "__v": 0,
+    "created": "2016-11-17T06:28:11.636Z"
+  }]
+    */
 
   api.get('/me', function(req, res) {
     res.send(req.decoded);
   });
   // this is for frontend to use, no other way to retrieve the my profile info
-
+  /*
+  To test:
+    GET localhost:3000/api
+    x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
+  
+    response body
+    {
+    "id": "582be53f3f34440200b84fac",   -- this is the user id for shachopin user, named as Dawei -- this is your logged in user
+    "iat": 1479344192,
+    "exp": 1479430592
+    }
+  */
   return api;
 
 }
