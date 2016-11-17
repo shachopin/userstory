@@ -6,7 +6,7 @@ angular.module('appRoutes', ['ngRoute'])
   $routeProvider
 
     .when('/', {
-      templateUrl: 'app/views/pages/home.html'
+      templateUrl: 'app/views/pages/home.html' //has to be relative to index.html
     });
     
 
