@@ -251,6 +251,7 @@ module.exports = function(app, express) {
     /*
     To test:
     GET localhost:3000/api
+    request header:
     x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
   
     response body
@@ -278,6 +279,7 @@ module.exports = function(app, express) {
   /*
   To test:
     GET localhost:3000/api
+    request header:
     x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
   
     response body

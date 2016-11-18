@@ -8,10 +8,10 @@ angular.module('authService', [])
 
   authFactory.login = function(username, password) {
 
-    return $http.post('/api/login', {
+    return $http.post('/api/login', {//when testing you pass the form data like in request body, here you are passing a json string in request body, here you are putting json object, will be converted to json string
       username: username,
       password: password
-    })
+    })  //return a promise object. sucess is one of its condition
     .success(function(data) {
       AuthToken.setToken(data.token);
       return data;
@@ -31,7 +31,7 @@ angular.module('authService', [])
 
   authFactory.getUser = function() {
     if(AuthToken.getToken())
-      return $http.get('/api/me');
+      return $http.get('/api/me'); //this is a promise object got returned, sucess() and then() can be used on all promise object, then() is like for any case, as long as there is return
     else
       return $q.reject({ message: "User has no token"});
 
@@ -82,6 +82,13 @@ angular.module('authService', [])
     return config;
 
   };
+
+  interceptorFactory.responseError = function(response) {
+    if (response.status == 403) 
+      $location.path('/login');
+
+    return $q.reject(response);
+  }
 
   
 
