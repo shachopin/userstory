@@ -26,7 +26,7 @@ angular.module('userCtrl', ['userService'])
     User.create(vm.userData)
       .then(function(response) {
         vm.userData = {};
-        vm.message = response.data.message;
+        vm.message = response.data.message; //because in .then, you should use reponse.data.message, diffent from .success() submethod
 
         $window.localStorage.setItem('token', response.data.token);
         $location.path('/');

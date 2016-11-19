@@ -31,13 +31,18 @@ module.exports = function(app, express) {
       username: req.body.username,
       password: req.body.password //body is bodyparser, because of this line in server.js -- app.use(bodyParser.urlencoded({extended: true}));
     });
+    var token = createToken(user);
 
     user.save(function (err) {
       if (err) {
         res.send(err);
         return;
       }
-      res.json({message: "user has been created"}); //although here is javascript object, the response will be in json format
+      res.json({
+        success: true,
+        message: "user has been created",
+        token: token
+      }); //although here is javascript object, the response will be in json format
      /*   {
             "message": "user has been created"
           }
@@ -79,7 +84,7 @@ module.exports = function(app, express) {
   api.post('/login',function(req, res){
     User.findOne({
       username: req.body.username
-    }).select('password').exec(function(err, user){
+    }).select('name username password').exec(function(err, user){
       if (err) throw err;
       if(!user) {
         res.send({message: "User doesn't exist"});
