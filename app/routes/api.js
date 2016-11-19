@@ -51,7 +51,7 @@ module.exports = function(app, express) {
   });
   /* To test:
     go to postman
-    post localhost:3000/api/signup
+    post localhost:3000/api/signup or use heroku host http://dawei-userstory.herokuapp.com/api/signup
     click the "x-www-form-urlencoded" radio button
     The moment I click this, then automatically this request header is added - Content-Type:application/x-www-form-urlencoded
     type in key value pair one by one
