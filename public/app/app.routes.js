@@ -18,6 +18,9 @@ need to include
     })
     .when('/login', {
       templateUrl: 'app/views/pages/login.html'
+    }).
+    .when('/signup', {
+      templateUrl: 'app/views/pages/signup.html'
     });
 
   $locationProvider.html5Mode(true);
