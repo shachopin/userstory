@@ -141,9 +141,14 @@ module.exports = function(app, express) {
         } else {
           console.log("here is the decoded info", decoded);
           /*
-            here is the decoded info { id: '582be53f3f34440200b84fac',
-            iat: 1479344192,
-            exp: 1479430592 }
+            here is the decoded info 
+            {
+              "id": "582be53f3f34440200b84fac",
+              "name": "Dawei",
+              "username": "shachopin",
+              "iat": 1479516215,
+              "exp": 1479602615
+            }
           */
           //
           req.decoded = decoded;
@@ -283,15 +288,17 @@ module.exports = function(app, express) {
   // this is for frontend to use, no other way to retrieve the my profile info
   /*
   To test:
-    GET localhost:3000/api
+    GET localhost:3000/api/me
     request header:
     x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmJlNTNmM2YzNDQ0MDIwMGI4NGZhYyIsImlhdCI6MTQ3OTM0NDE5MiwiZXhwIjoxNDc5NDMwNTkyfQ.hJKqmLY5Qjr_LzvTSq4rbFScU2WOzH1aBbmbN9IFKRs
   
     response body
     {
-    "id": "582be53f3f34440200b84fac",   -- this is the user id for shachopin user, named as Dawei -- this is your logged in user
-    "iat": 1479344192,
-    "exp": 1479430592
+      "id": "582be53f3f34440200b84fac",
+      "name": "Dawei",
+      "username": "shachopin",
+      "iat": 1479516215,
+      "exp": 1479602615
     }
   */
   return api;
