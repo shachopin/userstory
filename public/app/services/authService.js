@@ -75,7 +75,7 @@ angular.module('authService', [])
 
     if(token) {
 
-      config.headers['x-access-token'] = token;
+      config.headers['x-access-token'] = token; //not all http call will have this request header. /me api will have it for sure
 
     }
 

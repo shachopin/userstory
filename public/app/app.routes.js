@@ -44,6 +44,12 @@ need to include
 
   Also need to include the script tag to the 3rd party angluar module 
   - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-route.min.js
+  
+
+  What if token expired?? The /me api will have authentication error. Redirect to login page and hello nothing. Said Failer to authenticate user. 
+  If you logged in succesfully, will create a new token and store in localStorage. Now if I make code changes and redeploy to heroku. Go to the / route, it still recognize your token. showing hello shachopin. Meaning the token on the server side is still valid after redeployment
+
+  AuthIntercepter sends the correct token value in newer chrome browser version. It sends some weid default token value in request headerno matter what your localStage token value is, if in older chrome browser
   */
     
 
