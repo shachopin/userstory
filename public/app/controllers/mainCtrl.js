@@ -8,8 +8,8 @@ angular.module('mainCtrl', [])
 
   vm.loggedIn = Auth.isLoggedIn();
 
-  $rootScope.$on('$routeChangeStart', function() {
-
+  $rootScope.$on('$routeChangeStart', function() { //this means only when you do one of the routes in app.routes.js, this method will run
+  //say you type dawei-userstory.herokuapp.com/blahblah  index.html will show, but the me api won't run, hence just say hello without username
     vm.loggedIn = Auth.isLoggedIn();
 
     Auth.getUser()

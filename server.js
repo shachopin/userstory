@@ -23,6 +23,8 @@ app.use(express.static(__dirname + '/public'));
 var api = require('./app/routes/api')(app, express);
 app.use('/api', api); //this is for the API have this prefix: /api - for example, localhost:3000/api/signup
 //type anything else will go to the next route, to show the below html page: for example, if I tpe localhost:3000/api/userss
+//if I type localhost3000/api/userss it will be messsage: no token provided
+
 app.get('*', function(req,res){
   res.sendFile(__dirname + '/public/app/views/index.html');
 });

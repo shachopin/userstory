@@ -1,7 +1,7 @@
 angular.module('authService', [])
 
 .factory('Auth', function($http, $q, AuthToken) {
-
+ //no need to use Dependency Injection or []
 
   var authFactory = {};
 
