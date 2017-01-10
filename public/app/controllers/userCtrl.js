@@ -1,4 +1,4 @@
-angular.module('userCtrl', ['userService'])
+angular.module('userCtrl', []) //no need to include userService.js here because it's included in app.js
 
 
 .controller('UserController', function(User) {

@@ -1,4 +1,4 @@
-angular.module('MyApp', ['appRoutes', 'authService', 'mainCtrl', 'userCtrl', 'userService']) //for module dependecny injection, you stll need []
+angular.module('MyApp', ['appRoutes', 'authService', 'mainCtrl', 'userCtrl', 'userService', 'storyCtrl', 'storyService']) //for module dependecny injection, you stll need []
 .config(function($httpProvider) {
 
   $httpProvider.interceptors.push('AuthInterceptor'); 
