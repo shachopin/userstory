@@ -84,8 +84,10 @@ angular.module('authService', [])
   };
 
   interceptorFactory.responseError = function(response) {
-    if (response.status == 403) 
+    if (response.status == 403) {
       $location.path('/login');
+      console.log("redirecting to /login because response status is 403");
+    }
 
     return $q.reject(response);
   }

@@ -4,6 +4,10 @@ angular.module('appRoutes', ['ngRoute'])
 $locationProvider
 $http
 $httpProvier
+$loaction
+$window
+$rootScope
+$q
 all in OOB, no including additional angular module
 
 $routeProvier in ngRoute angular module
@@ -14,7 +18,7 @@ need to include
   $routeProvider
 
     .when('/', {
-      templateUrl: 'app/views/pages/home.html' //has to be relative to index.html
+      templateUrl: 'app/views/pages/home.html' //normally has to be relative to index.html  //here because you set static folder to be public folder in Node.js, so starting from app
     })
     .when('/login', {
       templateUrl: 'app/views/pages/login.html'
@@ -46,7 +50,7 @@ need to include
   - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-route.min.js
   
 
-  What if token expired?? The /me api will have authentication error. Redirect to login page and hello nothing. Said Failer to authenticate user. 
+  What if token expired?? The /me api will have authentication error. Redirect to login page and hello nothing. Said Failed to authenticate user. 
   If you logged in succesfully, will create a new token and store in localStorage. Now if I make code changes and redeploy to heroku. Go to the / route, it still recognize your token. showing hello shachopin. Meaning the token on the server side is still valid after redeployment
 
   AuthIntercepter sends the correct token value in newer chrome browser version. It sends some weid default token value in request headerno matter what your localStage token value is, if in older chrome browser
